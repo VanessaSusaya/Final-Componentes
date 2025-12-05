@@ -1,1 +1,8 @@
-<p>list-courses works!</p>
+<h2>Cursos</h2>
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="error" style="color:red">{{ error }}</div>
+<ul *ngIf="courses?.length">
+    <li *ngFor="let c of courses">
+        <strong>{{ c.titulo }}</strong> — {{ c.descripcion }}
+    </li>
+</ul>

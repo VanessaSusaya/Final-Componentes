@@ -1,5 +1,15 @@
-import { CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router, UrlTree } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
-export const loginGuard: CanActivateFn = (route, state) => {
-  return true;
-};
+@Injectable({ providedIn: 'root' })
+export class loginGuard implements CanActivate {
+  constructor(private auth: AuthService, private router: Router) {}
+
+  canActivate(): boolean | UrlTree {
+    if (this.auth.isAuthenticated()) {
+      return this.router.parseUrl('/dashboard');
+    }
+    return true;
+  }
+}

@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'capitalize'
-})
+@Pipe({ name: 'capitalize' })
 export class CapitalizePipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: string | undefined | null): string {
+    if (!value) return '';
+    return value
+      .split(' ')
+      .map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase())
+      .join(' ');
   }
-
 }

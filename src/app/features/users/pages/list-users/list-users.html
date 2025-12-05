@@ -1,1 +1,21 @@
-<p>list-users works!</p>
+<h2>Usuarios</h2>
+<div *ngIf="loading">Cargando...</div>
+<div *ngIf="error" style="color:red">{{ error }}</div>
+<table *ngIf="users?.length">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of users">
+            <td>{{u.id}}</td>
+            <td>{{u.nombre}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.role}}</td>
+        </tr>
+    </tbody>
+</table>
